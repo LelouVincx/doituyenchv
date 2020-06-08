@@ -135,4 +135,6 @@ int main() {
 		bool ok = enter();
 		if (ok == false) break;
 	}
+	
+	return 0;
 }

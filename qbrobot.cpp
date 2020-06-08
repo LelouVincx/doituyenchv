@@ -46,7 +46,6 @@ int Try (int w) {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr); cout.tie(nullptr);
-    freopen("in.txt", "r", stdin);
 
     cin >> n;
     FOR(i, 1, n) cin >> a[i];
@@ -60,11 +59,11 @@ int main() {
     }
 
     int res = Try(inf);
-    int left = 0, right = inf, mid = left+(right-left)/2;
-    while (mid!=left && mid!=right) {
-        if (Try(mid) == res) right=mid;
-        else left=mid;
-        mid = left+(right-left)/2;
+    int left = 0, right = inf;
+    while (left<=right) {
+        int mid = left+(right-left)/2;
+        if (Try(mid) == res) right = mid-1;
+        else left = mid+1;
     }
 
     cout << left << endl;
